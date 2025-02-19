@@ -63,7 +63,6 @@ The following environment variables are used in the application:
 |----------|------------------|-------------------------------|
 | `POST`   | `/users/register` | Register a new user          |
 | `POST`   | `/users/login`    | Authenticate user            |
-| `GET`    | `/users/profile`  | Get user profile             |
 
 ## WebSocket Integration
 The Chat Application uses WebSockets for real-time messaging. Connect to:
