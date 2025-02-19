@@ -1,0 +1,56 @@
+# flyctl launch added from .gitignore
+# Binaries for programs and plugins
+**/*.exe
+**/*.dll
+**/*.so
+**/*.dylib
+**/*.test
+**/*.out
+
+# Output of the go coverage tool
+**/*.coverprofile
+
+# Editor-specific configuration files
+**/.vscode
+**/.idea
+**/*.swp
+
+# Dependency directories (if using vendoring)
+**/vendor
+
+# Logs
+**/*.log
+
+# OS-specific files
+**/.DS_Store
+**/Thumbs.db
+
+# Go workspace file and directories
+**/go.work
+**/go.work.sum
+
+# Build directories
+**/bin
+**/build
+**/dist
+
+# Go module files
+**/go.sum
+
+# Generated files
+**/*.gen.go
+
+# Temporary files
+**/*.tmp
+**/*.temp
+
+# Coverage reports
+**/coverage.out
+**/coverage
+
+# Testing cache and artifacts
+**/testdata
+
+# Go tools (like race detector)
+**/*.prof
+fly.toml
