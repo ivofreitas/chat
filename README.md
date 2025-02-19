@@ -13,7 +13,6 @@ Chat Application is a real-time messaging platform built with Golang, supporting
 - [API Endpoints](#api-endpoints)
 - [WebSocket Integration](#websocket-integration)
 - [API Documentation](#api-documentation)
-- [Future Improvements](#future-improvements)
 - [License](#license)
 
 ## Makefile Commands
