@@ -12,6 +12,7 @@ Chat Application is a real-time messaging platform built with Golang, supporting
 - [Environment Variables](#environment-variables)
 - [API Endpoints](#api-endpoints)
 - [WebSocket Integration](#websocket-integration)
+- [Architecture](#architecture)
 - [API Documentation](#api-documentation)
 - [License](#license)
 
@@ -31,6 +32,14 @@ The project includes a `Makefile` that simplifies common development tasks. The 
 | `make mock`        | Generate mocks using Mockery                        |
 | `make swag`        | Generate API documentation using Swagger            |
 | `make help`        | Display available commands                          |
+
+## Architecture
+
+### Sequence Diagram
+![Sequence Diagram](docs/images/sequence-diagram.png)
+
+### Application Architecture
+![Application Architecture](docs/images/application-architecture.png)
 
 ## Environment Variables
 The following environment variables are used in the application:
