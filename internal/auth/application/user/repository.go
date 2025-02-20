@@ -3,12 +3,13 @@ package user
 import (
 	"database/sql"
 	"errors"
+	"github.com/ivofreitas/chat/internal/auth/domain"
 	"log"
 )
 
 type Repository interface {
 	CreateUser(email, hashedPassword string) error
-	GetUserByEmail(email string) (*User, error)
+	GetUserByEmail(email string) (*domain.User, error)
 }
 
 type repository struct {
@@ -17,12 +18,6 @@ type repository struct {
 
 func NewRepository(db *sql.DB) Repository {
 	return &repository{db: db}
-}
-
-type User struct {
-	ID             int64
-	Email          string
-	HashedPassword string
 }
 
 // CreateUser inserts a new user into the database.
@@ -37,8 +32,8 @@ func (r *repository) CreateUser(email, hashedPassword string) error {
 }
 
 // GetUserByEmail retrieves a user by their email.
-func (r *repository) GetUserByEmail(email string) (*User, error) {
-	var user User
+func (r *repository) GetUserByEmail(email string) (*domain.User, error) {
+	var user domain.User
 	query := "SELECT id, email, password FROM users_schema.users WHERE email = $1"
 	err := r.db.QueryRow(query, email).Scan(&user.ID, &user.Email, &user.HashedPassword)
 	if err != nil {
