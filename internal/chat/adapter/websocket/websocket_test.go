@@ -9,16 +9,6 @@ import (
 	"time"
 )
 
-type MockClient struct {
-	mock.Mock
-	Send chan []byte
-}
-
-func (m *MockClient) SendMessage(message string) {
-	m.Called(message)
-	m.Send <- []byte(message)
-}
-
 type MockPublisher struct {
 	mock.Mock
 }
