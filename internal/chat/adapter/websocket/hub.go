@@ -18,7 +18,7 @@ type Hub struct {
 
 	clients    map[*Client]bool
 	unregister chan *Client
-	publisher  *broker.Publisher
+	publisher  broker.Publisher
 }
 
 func GetHub() *Hub {

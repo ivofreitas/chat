@@ -8,21 +8,25 @@ import (
 	"github.com/streadway/amqp"
 )
 
-type Publisher struct {
+type Publisher interface {
+	Publish(message []byte)
+}
+
+type publisher struct {
 	ch        *amqp.Channel
 	queueName string
 	logger    *logrus.Entry
 }
 
-func NewPublisher() *Publisher {
+func NewPublisher() Publisher {
 	env := config.GetEnv()
 
 	_, ch := rabbitmq.Get()
 
-	return &Publisher{ch: ch, queueName: env.Broker.StockCodeQueue, logger: log.NewEntry()}
+	return &publisher{ch: ch, queueName: env.Broker.StockCodeQueue, logger: log.NewEntry()}
 }
 
-func (p *Publisher) Publish(message []byte) {
+func (p *publisher) Publish(message []byte) {
 	q, err := p.ch.QueueDeclare(
 		p.queueName,
 		true,
