@@ -35,10 +35,11 @@ func GetHub() *Hub {
 }
 
 func (h *Hub) Run() {
+	entry := log.NewEntry()
 	for {
-		entry := log.NewEntry()
 		select {
 		case client := <-h.Register:
+			entry.Debugf("Client registred!")
 			h.clients[client] = true
 		case client := <-h.unregister:
 			if _, ok := h.clients[client]; ok {
@@ -47,7 +48,7 @@ func (h *Hub) Run() {
 			}
 		case message := <-h.Broadcast:
 			go h.publisher.Publish(message)
-			entry.Infof("received a message!: %s", string(message))
+			entry.Debugf("Received a message!: %s", string(message))
 			for client := range h.clients {
 				select {
 				case client.Send <- message:

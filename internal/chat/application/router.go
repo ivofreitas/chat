@@ -5,7 +5,6 @@ import (
 	"github.com/ivofreitas/chat/internal/chat/adapter/websocket"
 	"github.com/ivofreitas/chat/pkg/log"
 	"github.com/labstack/echo/v4"
-	"github.com/swaggo/echo-swagger"
 	"net/http"
 )
 
@@ -15,11 +14,6 @@ var (
 
 func register(echo *echo.Echo) {
 	wsGroup(echo)
-	swaggerGroup(echo)
-}
-
-func swaggerGroup(echo *echo.Echo) {
-	echo.GET("/swagger/*", echoSwagger.WrapHandler)
 }
 
 func wsGroup(e *echo.Echo) {

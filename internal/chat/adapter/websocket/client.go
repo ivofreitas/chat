@@ -48,10 +48,8 @@ func (c *Client) ReadPump() {
 	c.Conn.SetPongHandler(func(string) error { c.Conn.SetReadDeadline(time.Now().Add(pongWait)); return nil })
 	for {
 		_, message, err := c.Conn.ReadMessage()
-		entry.Infof("received a message!: %s", string(message))
 		if err != nil {
 			if websocket.IsUnexpectedCloseError(err, websocket.CloseGoingAway, websocket.CloseAbnormalClosure) {
-				//log.Printf("error: %v", err)
 				entry.Errorf("readpump error: %s", err.Error())
 			}
 			break
@@ -89,7 +87,7 @@ func (c *Client) WritePump() {
 				entry.Errorf("next writer error %s", err.Error())
 				return
 			}
-			entry.Info("write pump success")
+
 			w.Write(message)
 
 			// Add queued chat messages to the current websocket message.
