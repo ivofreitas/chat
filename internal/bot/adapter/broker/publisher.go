@@ -4,8 +4,8 @@ import (
 	"github.com/ivofreitas/chat/pkg/config"
 	"github.com/ivofreitas/chat/pkg/log"
 	"github.com/ivofreitas/chat/pkg/rabbitmq"
+	amqp "github.com/rabbitmq/amqp091-go"
 	"github.com/sirupsen/logrus"
-	"github.com/streadway/amqp"
 )
 
 type Publisher struct {
