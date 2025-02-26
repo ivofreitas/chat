@@ -18,4 +18,6 @@ blocks:
             - go mod tidy
             - go mod download
             - go test ./...
-            - go build -v .
+            - go build -v cmd/auth/main.go
+            - go build -v cmd/bot/main.go
+            - go build -v cmd/chat/main.go
