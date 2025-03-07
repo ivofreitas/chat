@@ -2,9 +2,7 @@ package application
 
 import (
 	"context"
-	"fmt"
 	"github.com/ivofreitas/chat/internal/chat/adapter/websocket"
-	"github.com/ivofreitas/chat/pkg/config"
 	"github.com/ivofreitas/chat/pkg/log"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -46,13 +44,10 @@ func (s *Server) start() {
 
 	register(s.echo)
 
-	env := config.GetEnv()
+	s.logger.Infof("Server is starting in port 8081")
 
-	s.logger.Infof("Server is starting in port %s.", env.Server.ChatPort)
-
-	addr := fmt.Sprintf(":%s", env.Server.ChatPort)
 	go func() {
-		if err := s.echo.Start(addr); err != nil {
+		if err := s.echo.Start(":8081"); err != nil {
 			s.logger.WithError(err).Fatal("Shutting down the server now")
 		}
 	}()

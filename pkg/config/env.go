@@ -9,19 +9,12 @@ import (
 
 // Env values
 type Env struct {
-	Server   Server
 	Log      Log
 	Doc      Doc
 	Database Database
 	Broker   Broker
 	External External
 	Security Security
-}
-
-// Server config
-type Server struct {
-	AuthPort string
-	ChatPort string
 }
 
 // Log config
@@ -81,8 +74,6 @@ func GetEnv() *Env {
 		}
 
 		env = new(Env)
-		env.Server.AuthPort = viper.GetString("SERVER_AUTH_PORT")
-		env.Server.ChatPort = viper.GetString("SERVER_CHAT_PORT")
 
 		env.Log.Enabled = viper.GetBool("LOG_ENABLED")
 		env.Log.Level = viper.GetString("LOG_LEVEL")

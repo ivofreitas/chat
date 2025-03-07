@@ -2,8 +2,6 @@ package application
 
 import (
 	"context"
-	"fmt"
-	"github.com/ivofreitas/chat/pkg/config"
 	"github.com/ivofreitas/chat/pkg/log"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -40,16 +38,13 @@ func (s *Server) start() {
 		AllowMethods: []string{echo.GET, echo.POST, echo.PUT, echo.DELETE, echo.OPTIONS},
 		AllowHeaders: []string{"Content-Type", "Authorization"},
 	}))
-	
+
 	register(s.echo)
 
-	env := config.GetEnv()
+	s.logger.Info("Server is starting in port 8082")
 
-	s.logger.Infof("Server is starting in port %s.", env.Server.AuthPort)
-
-	addr := fmt.Sprintf(":%s", env.Server.AuthPort)
 	go func() {
-		if err := s.echo.Start(addr); err != nil {
+		if err := s.echo.Start(":8082"); err != nil {
 			s.logger.WithError(err).Fatal("Shutting down the server now")
 		}
 	}()

@@ -46,8 +46,6 @@ The following environment variables are used in the application:
 
 | Name                        | Suggested Value                            | Required |
 |-----------------------------|--------------------------------------------|----------|
-| `SERVER_CHAT_PORT`          | `8081`                                     | ✅       |
-| `SERVER_AUTH_PORT`          | `8082`                                     | ✅       |
 | `LOG_ENABLED`               | `true`                                     | ✅       |
 | `LOG_LEVEL`                 | `info`                                     | ✅       |
 | `DB_HOST`                   | `localhost`                                | ✅       |
